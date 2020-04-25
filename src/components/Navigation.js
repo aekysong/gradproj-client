@@ -22,7 +22,9 @@ function Navigation(props) {
   const classes = useStyles();
 
   const logoStyle = {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    fontSize: 'medium',
+    color: '#2E8B57'
   };
 
   const handleClick = event => {
@@ -36,7 +38,7 @@ function Navigation(props) {
 
   return (
     <div className={classes.navBar}>
-      <span style={logoStyle}><Link to="/">SKKU 교환학생 지원 웹사이트</Link></span>
+      <span style={ logoStyle }><Link to="/">SKKU 교환학생 지원 웹사이트</Link></span>
       <Button href='/universities' color="primary" >
         전체 대학 리스트
       </Button>
@@ -48,7 +50,7 @@ function Navigation(props) {
         </Button>
       {props.isAuthenticated ?
         <Box component="span">
-          <Button color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+          <Button id='mypage' color="primary" aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
             마이페이지
         </Button>
           <Menu
