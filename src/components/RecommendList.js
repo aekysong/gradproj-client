@@ -38,17 +38,21 @@ class RecommendUniv extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://127.0.0.1:8000/api/universities')
+        if (this.props.data.length === 0) {
+            axios.get('http://127.0.0.1:8000/api/universities')
             .then((res) => {
                 this.setState({
                     universities: this.getRandom(this.checkArray(res.data), 4),
                     isLoading: false
                 });
             })
+        }
     }
 
     componentWillReceiveProps(newProps) {
-        axios.get('http://127.0.0.1:8000/api/universities/search', {
+        if (newProps.data.length !== 0) {
+            console.log("check2");
+            axios.get('http://127.0.0.1:8000/api/universities/search', {
             params: {
                 nation: newProps.data.interest_nation,
             }
@@ -59,6 +63,7 @@ class RecommendUniv extends React.Component {
                     isLoading: false
                 });
             })
+        }
     }
 
     render() {
